@@ -7,13 +7,16 @@ class App extends React.Component{
   constructor(){
     super();
     this.state = {
-      gitData: []
+      gitData: [],
+      gitUserFollowers: [],
+      gitUserFollowersData:[],
+      gitUser: 'kevinnguyen805'
     }
   }
 
   componentDidMount(){
     axios
-      .get('https://api.github.com/users/kevinnguyen805')
+      .get(`https://api.github.com/users/${this.state.gitUser}`)
       .then(response => {
         console.log(response.data)
         this.setState({
@@ -23,23 +26,85 @@ class App extends React.Component{
       .catch(error => console.log(error))
   }
   
+  // * Once data retrieved => fetch user's follower data 
+  componentDidUpdate(prevProps, prevState){
+    if(this.state.gitData !== prevState.gitData){
+      axios.get(`https://api.github.com/users/${this.state.gitUser}/followers`)
+      .then(response => {
+        console.log(response.data)
+        this.setState({
+          gitUserFollowers: response.data
+        })
+      })
+      .catch(error => console.log(error))
+    }
+  }
+
+  
+
+  // * Search for a user's Git card
+  handleChanges = (event) => {
+    console.log(event.target.value)
+    this.setState({
+      gitUser: event.target.value
+    })
+  }
+  getUserData = event => {
+    event.preventDefault();
+    axios.get(`https://api.github.com/users/${this.state.gitUser}`)
+    .then(response => {
+      this.setState({
+        gitData: response.data
+      })
+    })
+      .catch(error => console.log(error))
+  }
+
+
+
+
+
 
 
   render(){
     return(
       <div>
+        
         <div>
-          <img src={this.state.gitData.avatar_url} alt="profile" />
-          <h1>{this.state.gitData.name}</h1>
-          <p>{this.state.gitData.bio}</p>
-          <p>{this.state.gitData.location}</p>
+          <input
+            type="text"
+            name="gitUser"
+            value={this.state.gitUser}
+            onChange={this.handleChanges}
+            placeholder="Search Username"
+          />
+          <button onClick={this.getUserData}>Search</button>
         </div>
 
+        <div>
+          <div>
+            <img src={this.state.gitData.avatar_url} alt="profile" />
+            <h1>{this.state.gitData.name}</h1>
+            <p>{this.state.gitData.bio}</p>
+            <p>{this.state.gitData.location}</p>
+          </div>
+
+          <div>
+              <p>{this.state.gitData.public_repos}</p>
+              <p>{this.state.gitData.followers}</p>
+              <p>{this.state.gitData.following}</p>
+          </div>
+        </div>
 
         <div>
-            <p>{this.state.gitData.public_repos}</p>
-            <p>{this.state.gitData.followers}</p>
-            <p>{this.state.gitData.following}</p>
+          {this.state.gitUserFollowers.map(item => {
+            return(
+              <div key={item.id}>
+                <h3>{item.login}</h3>
+                <img src={item.avatar_url} alt="follower profile" />
+              </div>
+            )
+          })}
         </div>
         
 
