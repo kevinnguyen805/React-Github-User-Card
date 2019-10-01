@@ -26,13 +26,14 @@ class App extends React.Component{
       .catch(error => console.log(error))
   }
   
-  // * Once data retrieved => fetch user's follower data 
+  // * Once data retrieved => fetch user's follower data  => then if usersFollower data uploaded go oone level deeper via axios
   componentDidUpdate(prevProps, prevState){
     if(this.state.gitData !== prevState.gitData){
       axios.get(`https://api.github.com/users/${this.state.gitUser}/followers`)
       .then(response => {
         this.setState({
-          gitUserFollowers: response.data
+          gitUserFollowers: response.data,
+          gitUserFollowersData: []
         })
       })
       .catch(error => console.log(error))
@@ -82,7 +83,7 @@ class App extends React.Component{
   render(){
     return(
       <div>
-        <h1>Find My GitCard</h1>
+        <h1 className="header">Find My GitCard</h1>
         <div className="search">
           <input
             type="text"
@@ -91,7 +92,7 @@ class App extends React.Component{
             onChange={this.handleChanges}
             placeholder="Search Username"
           />
-          <button onClick={this.getUserData}>Search for GitCard</button>
+          <button onClick={this.getUserData}>Search</button>
         </div>
 
         <div className="gitUser">
@@ -110,6 +111,26 @@ class App extends React.Component{
           </div>
         </div>
 
+    
+        <h1>{this.state.gitData.name}'s followers</h1>
+        <div className="follower-container">
+            {
+            this.state.gitUserFollowersData.map(item => {
+              return(
+                <div key={item.id} className="gitFollowers">
+                  <div className="follower">
+                  <img src={item.avatar_url} alt="follower profile" />
+                  <h3>{item.name}</h3>
+                  <p>User: {item.login}</p>
+                  <p>Bio: {item.bio}</p>
+                  <p>Located: {item.location}</p>
+                  </div>
+                </div>
+              )
+            })
+          }   
+       </div>
+
         {/* <div>
           {this.state.gitUserFollowers.map(item => {
             return(
@@ -120,25 +141,6 @@ class App extends React.Component{
             )
           })}
         </div> */}
-        <h1>{this.state.gitData.name}'s followers</h1>
-        <div className="follower-container">
-  
-            {
-            this.state.gitUserFollowersData.map(item => {
-              return(
-                <div key={item.id} className="gitFollowers">
-                  <div className="follower">
-                  <img src={item.avatar_url} alt="follower profile" />
-                  <h3>{item.name}</h3>
-                  <p>{item.login}</p>
-                  <p>{item.bio}</p>
-                  <p>{item.location}</p>
-                  </div>
-                </div>
-              )
-            })
-          }   
-       </div>
 
       </div>
     )
