@@ -1,22 +1,100 @@
-.App {
-  text-align: center;
+body{
+  max-width:1000px;
+  width:100%;
+  margin:0 auto;
+  font-family: 'Cabin', sans-serif;
+  text-align:center;
 }
 
-.App-logo {
-  height: 40vmin;
+
+.gitUser{
+  max-width:500px;
+  width:100%;
+  display:flex;
+  flex-wrap:wrap;
+  flex-direction:column;
+  align-items:center;
+  align-content:center;
+  justify-content:center;
+  margin:0 auto;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.gitUser-top{
+  border:1px solid white;
+  max-width:300px;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  background: linear-gradient(to right, #fd746c, #ff9068);
+  padding:8px;
+  border-top-left-radius:40px;
+  border-top-right-radius:5px;
+    box-shadow: 0 25px 25px rgba(0,0 ,0, .25);
+}
+.gitUser-top h1{
+  text-transform:uppercase;
+  color:white;
+}
+.gitUser-top p{
+  margin:5px;
+  text-align:center;
+}
+.gitUser-top img{
+  width:150px;
+  border-radius:50%;
+  margin-bottom:5px;
+      box-shadow: 0 15px 15px rgba(0,0 ,0, .25);
+
 }
 
-.App-link {
-  color: #09d3ac;
+.gitUser-bottom{
+  max-width:300px;
+  width:100%;
+  border:1px solid white;
+  display:flex;
+  justify-content:space-evenly;
+  padding:8px;
+  background: linear-gradient(to right, #fd746c, #ff9068);
+  border-bottom-right-radius:30px;
+  border-bottom-left-radius:5px;
+      box-shadow: 0 25px 25px rgba(0,0 ,0, .25);
+
+}
+.gitFollowers{
+  max-width:300px;
+  width:100%;
+  display:flex;
+  flex-wrap:wrap;
+  flex-direction:column;
+  align-items:center;
+  align-content:center;
+  justify-content:center;
+  margin:20px auto;
+}
+
+.follower{
+  border:1px solid white;
+    background: linear-gradient(to right, #00C9FF, #92FE9D);
+  max-width:250px;
+  width:100%;
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  flex-direction:column;
+  align-items:center;
+  padding:10px;
+      box-shadow: 0 25px 25px rgba(0,0 ,0, .25);
+
+  border-radius:20px;
+}
+.follower img{
+   width:170px;
+  border-radius:50%;
+  margin-bottom:5px;
+      box-shadow: 0 15px 15px rgba(0,0 ,0, .25);
+}
+.follower-container{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
 }

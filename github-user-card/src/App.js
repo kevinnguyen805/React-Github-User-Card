@@ -82,8 +82,8 @@ class App extends React.Component{
   render(){
     return(
       <div>
-        
-        <div>
+        <h1>Find My GitCard</h1>
+        <div className="search">
           <input
             type="text"
             name="gitUser"
@@ -91,21 +91,22 @@ class App extends React.Component{
             onChange={this.handleChanges}
             placeholder="Search Username"
           />
-          <button onClick={this.getUserData}>Search</button>
+          <button onClick={this.getUserData}>Search for GitCard</button>
         </div>
 
-        <div>
-          <div>
+        <div className="gitUser">
+          <h2>{this.state.gitData.name}'s GitHub</h2>
+          <div className="gitUser-top">
             <img src={this.state.gitData.avatar_url} alt="profile" />
             <h1>{this.state.gitData.name}</h1>
             <p>{this.state.gitData.bio}</p>
             <p>{this.state.gitData.location}</p>
           </div>
 
-          <div>
-              <p>{this.state.gitData.public_repos}</p>
-              <p>{this.state.gitData.followers}</p>
-              <p>{this.state.gitData.following}</p>
+          <div className="gitUser-bottom">
+              <p>Repo: {this.state.gitData.public_repos}</p>
+              <p className="break"> Followers: {this.state.gitData.followers}  </p>
+              <p>Following: {this.state.gitData.following}</p>
           </div>
         </div>
 
@@ -118,23 +119,26 @@ class App extends React.Component{
               </div>
             )
           })}
-        </div>
-         */}
-     
-          {
+        </div> */}
+        <h1>{this.state.gitData.name}'s followers</h1>
+        <div className="follower-container">
+  
+            {
             this.state.gitUserFollowersData.map(item => {
               return(
-                <div key={item.id}>
+                <div key={item.id} className="gitFollowers">
+                  <div className="follower">
                   <img src={item.avatar_url} alt="follower profile" />
-                  <p>{item.name}</p>
+                  <h3>{item.name}</h3>
                   <p>{item.login}</p>
                   <p>{item.bio}</p>
                   <p>{item.location}</p>
+                  </div>
                 </div>
               )
             })
-          } 
-      
+          }   
+       </div>
 
       </div>
     )
