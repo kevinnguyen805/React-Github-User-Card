@@ -1,0 +1,128 @@
+body{
+  max-width:1000px;
+  width:100%;
+  margin:0 auto;
+  font-family: 'Cabin', sans-serif;
+  text-align:center;
+}
+
+
+.gitUser{
+  max-width:500px;
+  width:100%;
+  display:flex;
+  flex-wrap:wrap;
+  flex-direction:column;
+  align-items:center;
+  align-content:center;
+  justify-content:center;
+  margin:0 auto;
+}
+
+.gitUser-top{
+  border:1px solid white;
+  max-width:300px;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+      background: linear-gradient(to right, #00C9FF, #92FE9D);
+  padding:8px;
+  
+  border-top-left-radius:30px;
+  border-top-right-radius:30px;
+    box-shadow: 0 25px 25px rgba(0,0 ,0, .25);
+}
+.gitUser-top h1{
+  text-transform:uppercase;
+}
+.gitUser-top p{
+  margin:5px;
+  text-align:center;
+}
+.gitUser-top img{
+  margin-top:15px;
+  width:150px;
+  border-radius:50%;
+  margin-bottom:5px;
+      box-shadow: 0 15px 15px rgba(0,0 ,0, .25);
+
+}
+
+.gitUser-bottom{
+  max-width:300px;
+  width:100%;
+  border:1px solid white;
+  display:flex;
+  justify-content:space-evenly;
+  padding:8px;
+      background: linear-gradient(to right, #00C9FF, #92FE9D);
+  border-bottom-right-radius:30px;
+  border-bottom-left-radius:30px;
+      box-shadow: 0 25px 25px rgba(0,0 ,0, .25);
+
+}
+.gitFollowers{
+  max-width:300px;
+  width:100%;
+  display:flex;
+  flex-wrap:wrap;
+  flex-direction:column;
+  align-items:center;
+  align-content:center;
+  justify-content:center;
+  margin:20px auto;
+}
+
+.follower{
+  border:1px solid white;
+    background: linear-gradient(to right, #00C9FF, #92FE9D);
+  max-width:250px;
+  width:100%;
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  flex-direction:column;
+  align-items:center;
+  padding:10px;
+      box-shadow: 0 25px 25px rgba(0,0 ,0, .25);
+
+  border-radius:20px;
+}
+.follower img{
+   width:170px;
+  border-radius:50%;
+  margin-bottom:5px;
+      box-shadow: 0 15px 15px rgba(0,0 ,0, .25);
+}
+.follower-container{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+.header{
+  font-size:4rem;
+   background: linear-gradient(to right, #00C9FF, #92FE9D);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+    max-width:500px;
+    margin:10px auto;
+    padding:10px;
+    border-radius:30px;
+}
+input{
+  border:1px solid #00C9FF;
+  font-size:16px;
+  padding:10px;
+  border-top-left-radius:10px;
+  border-bottom-left-radius:10px;
+}
+button{
+  padding:11px;
+      background: linear-gradient(to right, #00C9FF, #92FE9D);
+  border:none;
+  font-size:16px;
+  color:black;
+  font-weight:500;
+  border-top-right-radius:10px;
+  border-bottom-right-radius:10px;
+}
